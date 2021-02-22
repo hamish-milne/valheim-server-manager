@@ -1,0 +1,10 @@
+Features:
+    ☐ Install self; run on boot
+    ☐ Install steamcmd
+    ☐ Install VDS
+    ☐ Update VDS
+    ☐ List worlds
+    ☐ Add/delete world
+    ☐ Start/stop world
+    ☐ Persist configuration
+    ☐ Password authentication

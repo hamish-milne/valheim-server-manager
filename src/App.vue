@@ -1,54 +1,82 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+      <div class="d-flex align-center text-h4">
+        Valheim Server Manager
       </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld />
+      <v-container>
+        <v-row>
+          <v-col>
+            <v-card>
+              <v-card-title
+                >World Name
+                <v-btn icon><v-icon>mdi-pencil</v-icon></v-btn></v-card-title
+              >
+              <v-card-text>
+                <v-form>
+                  <v-text-field type="number" label="Port" />
+                  <v-text-field type="password" label="Password" />
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn color="primary">View logs</v-btn>
+                <v-btn color="primary">Start</v-btn>
+                <v-btn color="error">Stop</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+          <v-col>
+            <v-card>
+              <v-card-title>Resource monitor</v-card-title>
+              <v-card-text>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title>CPU</v-list-item-title>
+                    <v-progress-linear height="25">
+                      <template v-slot:default="{ value }">
+                        <strong>{{ value }}%</strong>
+                      </template>
+                    </v-progress-linear>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title>Memory</v-list-item-title>
+                    <v-progress-linear height="25">
+                      <template v-slot:default="{ value }">
+                        <strong>{{ value }}%</strong>
+                      </template>
+                    </v-progress-linear>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-card-text>
+            </v-card>
+            <v-card>
+              <v-card-title class="text-h4">
+                <v-icon>mdi-check</v-icon>
+                Valheim Dedicated Server is installed
+              </v-card-title>
+              <v-card-actions>
+                <v-btn>Update</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
 
 export default Vue.extend({
   name: "App",
 
-  components: {
-    HelloWorld
-  },
+  components: {},
 
   data: () => ({
     //
