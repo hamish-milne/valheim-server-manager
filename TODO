@@ -5,6 +5,24 @@ Features:
     ☐ Update VDS
     ☐ List worlds
     ☐ Add/delete world
+    ☐ Upload/download world data
     ☐ Start/stop world
     ☐ Persist configuration
     ☐ Password authentication
+    ☐ Set backup frequency
+
+API:
+    ☐ sqlite
+    ☐ Auth header
+    ☐ GET /world (list worlds)
+    ☐ POST /world (new world)
+    ☐ PATCH /world (update world)
+    ☐ GET /installs (get install status)
+    ☐ POST /installs (do install / update)
+    ☐ GET /status (resource usage, general status)
+
+Server functions:
+    ☐ Run install cmd
+    ☐ Run update cmd
+    ☐ Start world process (with guardian)
+    ☐ Stop world process

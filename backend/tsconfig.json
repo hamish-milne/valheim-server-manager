@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "lib": ["ES2020"],
+        "rootDir": "src",
+        "esModuleInterop": true
+    }
+}
