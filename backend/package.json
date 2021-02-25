@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node out-bundle.js",
-    "build": "webpack"
+    "build": "webpack",
+    "publish": "webpack --mode production && nexe --target 14.15.3 --resource ./public --input build/bundle.js --output build/valheim-server-manager.exe"
   },
   "dependencies": {
     "@types/cookie-parser": "^1.4.2",

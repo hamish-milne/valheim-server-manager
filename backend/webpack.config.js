@@ -5,11 +5,11 @@ module.exports = {
   devtool: "inline-source-map",
   target: 'node',
   entry: {
-    main: "./bin/www.ts",
+    main: "./src/index.ts",
   },
   output: {
     path: path.resolve(__dirname, './'),
-    filename: "out-bundle.js", // <--- Will be compiled to this single file
+    filename: "build/bundle.js",
   },
   node: {
     __dirname: false,

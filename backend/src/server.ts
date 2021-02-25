@@ -1,30 +1,10 @@
 import { spawn, ChildProcess } from 'child_process'
 import { open } from 'fs/promises'
+import { World, WorldDoc, WorldState } from './types'
 
-type User = {
-    name: String,
-    state: 'allow' | 'ban' | 'admin'
-}
+type ServerState = World & {process: ChildProcess}
 
-type World = {
-    name: string,
-    port: number,
-    password: string,
-    users: User[],
-    enabled: boolean,
-}
-
-type WorldDoc = World & {_id: string}
-type WorldState = {
-    _id: string,
-    state: 'stopped' | 'starting' | 'started' | 'stopping' | 'error',
-    message?: string
-}
-
-type State = World & {process: ChildProcess}
-
-
-const running = new Map<string, State>()
+const running = new Map<string, ServerState>()
 
 export function update(world: WorldDoc): WorldState {
     if (world._id in running) {
@@ -53,7 +33,7 @@ export function update(world: WorldDoc): WorldState {
     }
 }
 
-function getState(state: State) {
+function getState(state: ServerState) {
     switch (state.process.exitCode) {
         case null: switch (state.process.signalCode) {
             case null: return state.enabled ? 'started' : 'stopping'
@@ -87,7 +67,7 @@ async function updateUserList(world: WorldDoc) {
     await updateFile(`./data/${world._id}/adminlist.txt`, 'admin')
 }
 
-function start(world: WorldDoc): State {
+function start(world: WorldDoc): ServerState {
     // TODO: Multi-platform
     updateUserList(world)
     const gameServer = spawn('./valheim_server.86-64', [
